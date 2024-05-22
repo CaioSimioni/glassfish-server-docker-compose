@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  glassfish:
+    build: .
+    ports:
+      - "8080:8080"
+      - "4848:4848"  # Porta do console administrativo
+    environment:
+      - ADMIN_PASSWORD=admin
+      - ADMIN_USER=admin
+      - AS_ADMIN_USER=admin
+    volumes:
+     - ./glassfish/domain.xml:/glassfish4/glassfish/domains/domain1/config/domain.xml
+     
+    entrypoint: ["/usr/local/bin/entrypoint.sh", "start"]
+
