@@ -1,2 +1,2 @@
 **Para iniciar execute**
-docker-glasfish# sudo docker-compose up --build
+sudo docker-compose up --build
