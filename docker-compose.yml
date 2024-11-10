@@ -1,17 +1,18 @@
-version: '3.3'
-
 services:
   glassfish:
     build: .
+    container_name: glassfish-server
+    env_file:
+      - .env
     ports:
-      - "8080:8080"
-      - "4848:4848"  # Porta do console administrativo
+      - "${APP_PORT}:8080"  # Mapeia a porta externa para a porta interna 8080
+      - "${CONSOLE_PORT}:4848"  # Mapeia a porta do console
     environment:
-      - ADMIN_PASSWORD=admin
-      - ADMIN_USER=admin
-      - AS_ADMIN_USER=admin
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - ADMIN_USER=${ADMIN_USER}
+      - AS_ADMIN_USER=${AS_ADMIN_USER}
     volumes:
-     - ./glassfish/domain.xml:/glassfish4/glassfish/domains/domain1/config/domain.xml
-     
-    entrypoint: ["/usr/local/bin/entrypoint.sh", "start"]
-
+      - ./apps:/opt/glassfish/glassfish/domains/domain1/autodeploy
+      - ./glassfish-config:/opt/glassfish/glassfish/domains/domain1/config
+    restart: always
+    entrypoint: [ "/usr/local/bin/entrypoint.sh", "start" ]  # Não é necessário se já estiver no Dockerfile

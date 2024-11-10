@@ -1,0 +1,8 @@
+# git
+.git/
+
+# env
+.env
+
+# Arquivo .zip glassfish
+downloads/*.zip
