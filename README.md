@@ -1,8 +1,8 @@
 # Glassfish4.1 Server feito em Docker Compose
 
 ## To-do List
-[ ] Arrumar o arquivo de entrypoint para fazer as configurações de admin e habilitar o console-admin
-[ ] Deixar um app de teste opcional
+- [ ] Arrumar o arquivo de entrypoint para fazer as configurações de admin e habilitar o console-admin
+- [ ] Deixar um app de teste opcional
 
 ## Setup
 
